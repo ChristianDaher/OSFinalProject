@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- css -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- scripts -->
+  <script defer src="script.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Page Replacement Simulator</title>
+</head>
+
+<body>
+
+  <section class="content-wrapper">
+    <h1 class="title">Page Replacement Simulator</h1>
+    
+    <form id="inputForm" class="form">
+      <div>
+        <label for="numFrames" class="label">Frames</label>
+        <input class="input" type="number" min=0 id="numFrames" placeholder="Enter a Number of Frames" required
+          autofocus>
+      </div>
+
+      <div>
+        <label for="inputString" class="label">Input String (Seperated by a Space)</label>
+        <input class="input" type="text" id="inputString" placeholder="Enter a Page Reference String" required>
+      </div>
+
+      <div>
+        <label for="replacementPolicy" class="label">Choose a Replacement Policy</label>
+        <select id="replacementPolicy" class="input" required>
+          <option value="" disabled selected hidden>Select a Policy</option>
+          <option value="optimal">Optimal</option>
+          <option value="lru">LRU</option>
+          <option value="fifo">FIFO</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="primary-button">Submit</button>
+        <button id="resetButton" class="red-button">Reset</button>
+      </div>
+    </form>
+
+    <div id="output" class="output" style="display: none;">
+      <div>
+        <p class="results">Hit Rate: <span id="hitRate" class="hit-rate"></span></p>
+        <p class="results">Total Page Faults: <span id="totalFaults" class="total-faults"></span></p>
+
+        <div class="buttons">
+          <div>
+            <button id="generateGraphButton" class="primary-button">Generate Graph</button>
+            <button id="hideGraphButton" class="red-button">Hide Graph</button>
+          </div>
+
+          <div>
+            <button id="showResultsButton" class="primary-button">Show Detailed Results</button>
+            <button id="hideResultsButton" class="red-button">Hide Detailed Results</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <canvas id="chart"></canvas>
+      </div>
+
+      <table id="resultTable" style="display: none;">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Hit/Fault</th>
+          </tr>
+        </thead>
+        <tbody id="replacementSequence"></tbody>
+      </table>
+    </div>
+  </section>
+</body>
+
+</html>
